@@ -21,4 +21,15 @@ export class AutentificacionService {
     });
   }
 
+  register(nombres,apellidos,dpi,no_cuenta,email,password){
+    const data = {nombres,apellidos,dpi,no_cuenta,email,password}
+    const url = `${this.url_api}/register`;
+    return new Promise(resolve => {
+      this.httpClient.post(url,data)
+      .subscribe(resp => {
+        resolve(resp["success"]);
+      });
+    });
+  }
+
 }

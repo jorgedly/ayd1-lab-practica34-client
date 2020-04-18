@@ -74,4 +74,24 @@ export class LoginComponent implements OnInit {
       })
   }
 
+  async register(){
+    const resp = await this.autentificacionService.
+    register(this.nombres_registro,this.apellidos_registro,this.dpi_registro,this.no_cuenta_registro,this.email_registro,this.password_registro);
+
+    if(resp){
+      Swal.fire({
+        icon: 'success',
+        title: 'Datos correctos.',
+        text: 'Cuenta registrada correctamente'
+      })
+      this.router.navigate(['/','home']);  
+    }
+    else
+      Swal.fire({
+        icon: 'error',
+        title: 'Datos incorrectos.',
+        text: 'No se ha podido registrar la cuenta'
+      })
+  }
+
 }
