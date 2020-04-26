@@ -16,7 +16,7 @@ export class AutentificacionService {
     return new Promise(resolve => {
       this.httpClient.post(url,data)
       .subscribe(resp => {
-        resolve(resp["auth"]);
+        resolve(resp);
       });
     });
   }

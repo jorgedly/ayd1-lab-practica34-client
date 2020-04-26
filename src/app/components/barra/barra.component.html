@@ -1,5 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
+    {{nombres}} {{apellidos}} - No. {{no_cuenta}}
     <span class="example-spacer"></span>
     <button *ngFor="let panel of paneles" mat-icon-button [matTooltip]="panel.descripcion" [routerLink]="panel.ruta">
       <mat-icon>{{panel.icono}}</mat-icon>

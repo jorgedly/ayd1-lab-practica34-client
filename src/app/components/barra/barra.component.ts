@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraComponent implements OnInit {
 
+  nombres: string;
+  apellidos: string;
+  no_cuenta: string;
+
   paneles: Panel[] = [
     {
       descripcion: 'Ir al perfil',
@@ -20,7 +24,11 @@ export class BarraComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor() {
+    this.nombres = localStorage.getItem('nombres') ? localStorage.getItem('nombres') : 'Nombre';
+    this.apellidos = localStorage.getItem('apellidos') ? localStorage.getItem('apellidos') : 'Apellido';
+    this.no_cuenta = localStorage.getItem('no_cuenta') ? localStorage.getItem('no_cuenta') : '123';
+  }
 
   ngOnInit(): void {
   }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker/public-api';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ConexionService } from 'src/app/services/conexion.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { ViewChild } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-tipocambio',
@@ -10,59 +14,49 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class TipocambioComponent implements OnInit {
 
   cambioSimple: number;
-  cambioDia: number;
+  cambios: Cambio[];
   limite: Date;
 
-  constructor(private http: HttpClient) {
-    this.cambioSimple = 0.0;
-    this.cambioDia = 0.0;
+  displayedColumns: string[] = ['fecha', 'venta', 'compra'];
+  dataSource: MatTableDataSource<Cambio>;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
+  constructor(
+    private conexion: ConexionService
+  ) {
+    this.cambioSimple = 0;
+    this.cambios = [];
     this.limite = new Date();
+    this.dataSource = new MatTableDataSource([]);
   }
 
-  ngOnInit(): void {
-    this.con1();
+  async ngOnInit() {
+    this.cambioSimple = await this.conexion.obtenerCambioSimple();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  con0() {
-    const body = `<?xml version="1.0" encoding="utf-8"?>
-    <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Body>
-        <TipoCambioDia xmlns="http://www.banguat.gob.gt/variables/ws/" />
-      </soap:Body>
-    </soap:Envelope>`;
-    this.http.post('https://www.banguat.gob.gt/variables/ws/TipoCambio.asmx?wsdl', body, {
-      headers: new HttpHeaders({
-        //'Content-Length': '166',
-        'Content-Type': 'application/soap+xml; charset="UTF-8"',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-        //'Host': 'www.banguat.gob.gt',
-        'SOAPAction': '"http://www.banguat.gob.gt/variables/ws/TipoCambioDia"'
-      })
-    })
-      .subscribe(data => {
-        console.log(data);
-      });
+  async cambiar(event: MatDatepickerInputEvent<Date>) {
+    const fecha = event.value;
+    const dato = `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`;
+    this.cambios = await this.conexion.obtenerTipoCambioFechaInicio(dato);
+    this.dataSource.data = this.cambios;
   }
 
-  con1() {
-    var http = new XMLHttpRequest();
-    var postdata = "param1=value1&param2=value2";
-    http.open("POST", "http://www.httpdebugger.com", true);
-    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.setRequestHeader("Content-length", `${postdata.length}`);
-    http.setRequestHeader("Access-Control-Allow-Origin", '*');
-
-    http.onreadystatechange = function () {
-      if (http.readyState == 4 && http.status == 200) {
-        alert(http.responseText);
-      }
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
-    http.send(postdata);
   }
 
-  cambiar(event: MatDatepickerInputEvent<Date>): void {
-    const fecha: Date = event.value;
-  }
+}
 
+export interface Cambio {
+  moneda: string;
+  fecha: string;
+  venta: string;
+  compra: string;
 }

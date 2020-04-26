@@ -18,7 +18,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MatDatepickerModule, } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-//import {MAT_DATE_LOCALE} from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 const mods = [
     MatButtonModule,
@@ -38,7 +40,10 @@ const mods = [
     MatSnackBarModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule
 ]
 
 @NgModule({

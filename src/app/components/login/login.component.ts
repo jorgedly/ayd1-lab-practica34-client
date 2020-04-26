@@ -64,8 +64,13 @@ export class LoginComponent implements OnInit {
     const resp = await this.autentificacionService.login(this.email,this.password);
     console.log(resp);
 
-    if(resp)
+    if(resp['auth']) {
+      localStorage.setItem('nombres', resp['nombres'] ? resp['nombres'] : '');
+      localStorage.setItem('apellidos', resp['apellidos'] ? resp['apellidos'] : '');
+      localStorage.setItem('no_cuenta', resp['no_cuenta'] ? resp['no_cuenta'] : '');
       this.router.navigate(['/','home']);  
+    }
+      
     else
       Swal.fire({
         icon: 'error',
