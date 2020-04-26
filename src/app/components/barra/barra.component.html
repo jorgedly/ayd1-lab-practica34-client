@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="example-spacer"></span>
+    <button *ngFor="let panel of paneles" mat-icon-button [matTooltip]="panel.descripcion" [routerLink]="panel.ruta">
+      <mat-icon>{{panel.icono}}</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Cerrar sesión" [routerLink]="'/'">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -16,6 +16,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { MatDatepickerModule, } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+//import {MAT_DATE_LOCALE} from '@angular/material';
 
 const mods = [
     MatButtonModule,
@@ -33,7 +36,9 @@ const mods = [
     MatCardModule,
     MatListModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 ]
 
 @NgModule({

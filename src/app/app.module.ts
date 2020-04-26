@@ -10,12 +10,17 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { BarraComponent } from './components/barra/barra.component';
+import { TipocambioComponent } from './components/tipocambio/tipocambio.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    BarraComponent,
+    TipocambioComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

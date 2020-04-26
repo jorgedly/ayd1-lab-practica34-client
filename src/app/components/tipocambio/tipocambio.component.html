@@ -1,0 +1,24 @@
+<app-barra></app-barra>
+<br>
+<div class="columns">
+  <mat-card class="column is-half-desktop is-full-mobile">
+    <mat-card-header>
+      <mat-card-title>Tipo de cambio del dia</mat-card-title>
+      <mat-card-subtitle>1 Dolar = {{cambioSimple}} Quetzales</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card class="column is-half-desktop is-full-mobile">
+    <mat-card-header>
+      <mat-card-title>Tipo de cambio por fecha</mat-card-title>
+      <mat-card-subtitle>1 Dolar = {{cambioDia}} Quetzales</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <mat-label>Elija una fecha de inicio</mat-label>
+        <input matInput [max]="limite" [matDatepicker]="picker" (dateChange)="cambiar($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+</div>
