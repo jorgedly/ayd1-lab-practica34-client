@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { TipocambioComponent } from './tipocambio.component';
 
@@ -8,9 +9,11 @@ describe('TipocambioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TipocambioComponent ]
+      imports: [HttpClientTestingModule],
+      providers: [TipocambioComponent],
+      declarations: [TipocambioComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

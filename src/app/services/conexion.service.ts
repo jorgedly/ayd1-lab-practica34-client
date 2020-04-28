@@ -9,12 +9,20 @@ export class ConexionService {
 
   constructor(private consumo: ConsumoService) { }
 
-  async obtenerCambioSimple(): Promise<number> {
-    return await this.consumo.obtenerTipoCambioSimple() as number;
+  async obtenerCambioSimplePromesa(): Promise<number> {
+    return await this.consumo.obtenerTipoCambioSimplePromesa() as number;
   }
 
-  async obtenerTipoCambioFechaInicio(fecha: string): Promise<Cambio[]> {
-    return await this.consumo.obtenerTipoCambioFechaInicio(fecha) as Cambio[];
+  obtenerCambioSimple() {
+    return this.consumo.obtenerTipoCambioSimple();
+  }
+
+  async obtenerTipoCambioFechaInicioPromesa(fecha: string): Promise<Cambio[]> {
+    return await this.consumo.obtenerTipoCambioFechaInicioPromesa(fecha) as Cambio[];
+  }
+
+  obtenerTipoCambioFechaInicio(fecha: string) {
+    return this.consumo.obtenerTipoCambioFechaInicio(fecha);
   }
 
 }

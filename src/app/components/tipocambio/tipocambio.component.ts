@@ -32,7 +32,7 @@ export class TipocambioComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.cambioSimple = await this.conexion.obtenerCambioSimple();
+    this.cambioSimple = await this.conexion.obtenerCambioSimplePromesa();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -40,7 +40,7 @@ export class TipocambioComponent implements OnInit {
   async cambiar(event: MatDatepickerInputEvent<Date>) {
     const fecha = event.value;
     const dato = `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`;
-    this.cambios = await this.conexion.obtenerTipoCambioFechaInicio(dato);
+    this.cambios = await this.conexion.obtenerTipoCambioFechaInicioPromesa(dato);
     this.dataSource.data = this.cambios;
   }
 

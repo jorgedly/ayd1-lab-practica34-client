@@ -10,12 +10,20 @@ export class ConsumoService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerTipoCambioSimple() {
+  obtenerTipoCambioSimplePromesa() {
     return this.http.post(`${this.url}cambio/dia`, {}).toPromise();
   }
 
-  obtenerTipoCambioFechaInicio(fecha: string) {
+  obtenerTipoCambioSimple() {
+    return this.http.post(`${this.url}cambio/dia`, {});
+  }
+
+  obtenerTipoCambioFechaInicioPromesa(fecha: string) {
     return this.http.post(`${this.url}cambio/fecha`, { fecha }).toPromise();
+  }
+
+  obtenerTipoCambioFechaInicio(fecha: string) {
+    return this.http.post(`${this.url}cambio/fecha`, { fecha });
   }
 
 }
