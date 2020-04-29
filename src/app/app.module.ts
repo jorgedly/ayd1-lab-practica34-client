@@ -10,12 +10,16 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ConsultarSaldoComponent } from './components/consultar-saldo/consultar-saldo.component';
+import { BarraComponent } from './components/barra/barra.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ConsultarSaldoComponent,
+    BarraComponent
   ],
   imports: [
     BrowserModule,
