@@ -18,6 +18,11 @@ export class BarraComponent implements OnInit {
       icono: 'person'
     },
     {
+      descripcion: 'Consultar Saldo',
+      ruta: '/consultarSaldo',
+      icono: 'account_balance'
+    },
+    {
       descripcion: 'Ir a tipo cambio',
       ruta: '/tipocambio',
       icono: 'attach_money'

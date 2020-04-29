@@ -1,1 +1,57 @@
-<p>consultar-saldo works!</p>
+<app-barra></app-barra>
+<br>
+<div class="columns">
+    <div class="column is-full-mobile is-half-desktop">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Saldo de Cuenta</mat-card-title>
+            </mat-card-header>
+            <div class="example-container">
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Cuenta de origen</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Saldo disponible</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Saldo Total</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">No_de_Operacion</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">cargos</th>
+            <th scope="col">abonos</th>
+            <th scope="col">saldo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let status of workStatuses">
+            <th scope="row">{{ status.description }}</th>
+            <td>{{ status.description }}</td>
+            <td>{{ status.description }}</td>
+            <td>{{ status.description }}</td>
+            <td>{{ status.description }}</td>
+           <!--
+            <td>
+                <img src="assets/img/{{postre.img}}" width="30px" class="img-fluid" alt="{{postre.nombre}}">
+            </td>
+        -->
+            <td>{{ status.description }}</td>
+        </tr>
+    </tbody>
+</table>
