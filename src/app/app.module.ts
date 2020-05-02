@@ -10,12 +10,14 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { TransferenciaComponent } from './components/transferencia/transferencia.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TransferenciaComponent
   ],
   imports: [
     BrowserModule,
