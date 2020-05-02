@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
   password_registro: string = '';
 
   constructor(public autentificacionService: AutentificacionService,
-              public router: Router) { }
+              public router: Router) { 
+                //localStorage.clear();
+              }
 
   ngOnInit(): void {
   }

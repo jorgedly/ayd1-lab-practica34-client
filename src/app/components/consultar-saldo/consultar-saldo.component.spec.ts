@@ -19,7 +19,7 @@ describe('ConsultarSaldoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Prueba Unitaria', () => {
     expect(component).toBeTruthy();
   });
 });

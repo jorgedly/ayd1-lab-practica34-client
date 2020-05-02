@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConsultarSaldoComponent } from './components/consultar-saldo/consultar-saldo.component';
 import { BarraComponent } from './components/barra/barra.component';
 import { TipocambioComponent } from './components/tipocambio/tipocambio.component';
+import { TransferenciaComponent } from './components/transferencia/transferencia.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TipocambioComponent } from './components/tipocambio/tipocambio.componen
     HomeComponent,
     ConsultarSaldoComponent,
     BarraComponent,
-    TipocambioComponent
+    TipocambioComponent,
+    TransferenciaComponent
   ],
   imports: [
     BrowserModule,
