@@ -22,4 +22,9 @@ describe('ConsultarSaldoComponent', () => {
   it('Prueba Unitaria', () => {
     expect(component).toBeTruthy();
   });
+
+  it('debe_comenzar_con_un_usuario' , () => {
+    expect(component.existe).toBeTrue();
+  });
+
 });

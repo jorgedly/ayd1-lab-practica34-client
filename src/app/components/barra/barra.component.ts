@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./barra.component.scss']
 })
 export class BarraComponent implements OnInit {
-
+  item: any;
   nombres: string;
   apellidos: string;
   no_cuenta: string;
@@ -42,7 +42,6 @@ export class BarraComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
 
 interface Panel {

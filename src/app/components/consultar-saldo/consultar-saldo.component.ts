@@ -14,45 +14,50 @@ import { LoginComponent } from '../login/login.component';
 export class ConsultarSaldoComponent implements OnInit {
 
   consulta: Consultita;
-  noCuenta: number = 0;
+  noCuenta: number = 8;
   saldo: number = 0;
-  cuenta : any;
+  cuenta: any;
   saldoDeb: any;
   saldoCre: any;
+  existe: true;
 
   constructor(public consultaService: ConsultaService,
-              public router: Router) { 
-                this.getConsult();
-                this.getSaldoDeb();
-                this.getSaldoCre();
-              }
+    public router: Router) {
+    this.getConsult();
+    this.getSaldoDeb();
+    this.getSaldoCre();
+    this.devolverNoCuenta();
+  }
+
+  devolverNoCuenta() {
+    //TODO devolver el no de cuenta en variable de session
+    //localStorage.getItem('no_cuenta') ? localStorage.getItem('no_cuenta') : 'noCuenta';
+  }
+
 
   ngOnInit(): void {
   }
 
-  async getConsult(){
+  async getConsult() {
     const resp = await this.consultaService.getConsulta(this.noCuenta);
     this.cuenta = JSON.stringify(resp);
-    console.log(this.cuenta);
-    this.saldo = this.cuenta[0];
     var val = this.cuenta;
-    val = val.replace("[","")
-    val = val.replace("]","")
+    val = val.replace("[", "")
+    val = val.replace("]", "")
     const obj = JSON.parse(val);
     this.noCuenta = obj.no_cuenta;
     this.saldo = obj.saldo;
+    this.existe = true;
   }
 
-  async getSaldoDeb(){
+  async getSaldoDeb() {
     const resp = await this.consultaService.getSaldoDeb(this.noCuenta);
     this.saldoDeb = resp;
-    console.log("debito"+resp);
   }
 
-  async getSaldoCre(){
+  async getSaldoCre() {
     const resp = await this.consultaService.getSaldoCre(this.noCuenta);
     this.saldoCre = resp;
-    console.log("credito"+resp);
   }
 
   /*

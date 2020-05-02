@@ -32,4 +32,14 @@ export class AutentificacionService {
     });
   }
 
+  devolverUsuario(email,password){
+    const data = {email, password}
+    const url = `${this.url_api}/getUser`;
+    return new Promise(resolve => {
+      this.httpClient.post(url,data)
+      .subscribe(resp => {
+        resolve(resp);
+      });
+    });
+  }
 }
