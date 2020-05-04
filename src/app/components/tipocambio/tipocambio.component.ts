@@ -41,6 +41,9 @@ export class TipocambioComponent implements OnInit {
     const fecha = event.value;
     const dato = `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`;
     this.cambios = await this.conexion.obtenerTipoCambioFechaInicioPromesa(dato);
+    if (!(this.cambios instanceof Array)) {
+      this.cambios = [this.cambios];
+    }
     this.dataSource.data = this.cambios;
   }
 

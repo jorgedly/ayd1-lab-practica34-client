@@ -19,58 +19,71 @@ export class LoginComponent implements OnInit {
   no_cuenta_registro: string = '';
   email_registro: string = '';
   password_registro: string = '';
-
+  myObj :any;
+  item2:any;
+  key: any;
+  
   constructor(public autentificacionService: AutentificacionService,
-              public router: Router) { }
+    public router: Router) {
+    localStorage.clear();
+  }
 
   ngOnInit(): void {
   }
 
+  //---------------------------------------------VARIABLES DE SESSION
+  guardarVariable(key, myObj){
+    localStorage.setItem(key, JSON.stringify(myObj));
+  }
+
+  leerVariable(){
+    //localStorage.setItem(key, JSON.stringify(myObj));
+  }
+
   //------------------------------------------------OBTENER DATOS------------------------------------------------//
-  onKeyPassLogin(event){
+  onKeyPassLogin(event) {
     this.password = event.target.value;
   }
 
-  onKeyEmailLogin(event){
+  onKeyEmailLogin(event) {
     this.email = event.target.value;
   }
 
-  onKeyNombresRegister(event){
+  onKeyNombresRegister(event) {
     this.nombres_registro = event.target.value;
   }
 
-  onKeyApellidosRegister(event){
+  onKeyApellidosRegister(event) {
     this.apellidos_registro = event.target.value;
   }
 
-  onKeyDPIRegister(event){
+  onKeyDPIRegister(event) {
     this.dpi_registro = event.target.value;
   }
 
-  onKeyNoCuentaRegister(event){
+  onKeyNoCuentaRegister(event) {
     this.no_cuenta_registro = event.target.value;
   }
 
-  onKeyEmailRegister(event){
+  onKeyEmailRegister(event) {
     this.email_registro = event.target.value;
   }
 
-  onKeyPasswordRegister(event){
+  onKeyPasswordRegister(event) {
     this.password_registro = event.target.value;
   }
 
   //---------------------------------------------------METODOS---------------------------------------------------//
-  async login(){
-    const resp = await this.autentificacionService.login(this.email,this.password);
+  async login() {
+    const resp = await this.autentificacionService.login(this.email, this.password);
     console.log(resp);
 
-    if(resp['auth']) {
-      localStorage.setItem('nombres', resp['nombres'] ? resp['nombres'] : '');
-      localStorage.setItem('apellidos', resp['apellidos'] ? resp['apellidos'] : '');
-      localStorage.setItem('no_cuenta', resp['no_cuenta'] ? resp['no_cuenta'] : '');
-      this.router.navigate(['/','home']);  
+    if (resp) {
+      console.log(resp);
+      if (resp === true) {
+        this.router.navigate(['/', 'home']);
+      }
     }
-      
     else
       Swal.fire({
         icon: 'error',
@@ -79,17 +92,17 @@ export class LoginComponent implements OnInit {
       })
   }
 
-  async register(){
+  async register() {
     const resp = await this.autentificacionService.
-    register(this.nombres_registro,this.apellidos_registro,this.dpi_registro,this.no_cuenta_registro,this.email_registro,this.password_registro);
+      register(this.nombres_registro, this.apellidos_registro, this.dpi_registro, this.no_cuenta_registro, this.email_registro, this.password_registro);
 
-    if(resp){
+    if (resp) {
       Swal.fire({
         icon: 'success',
         title: 'Datos correctos.',
         text: 'Cuenta registrada correctamente'
       })
-      this.router.navigate(['/','home']);  
+      this.router.navigate(['/', 'home']);
     }
     else
       Swal.fire({
