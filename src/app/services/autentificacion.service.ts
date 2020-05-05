@@ -42,4 +42,27 @@ export class AutentificacionService {
       });
     });
   }
+
+  obtenerDatos(no_cuenta){
+    const data = { no_cuenta }
+    const url = `${this.url_api}/getDatos`;
+    return new Promise(resolve => {
+      this.httpClient.post(url,data)
+      .subscribe(resp => {
+        resolve(resp);
+      });
+    });
+  }
+
+  modificarPerfil(no_cuenta, email, password){
+    const data = {no_cuenta, email, password}
+    const url = `${this.url_api}/modificarPerfil`;
+    return new Promise(resolve => {
+      this.httpClient.put(url,data)
+      .subscribe(resp => {
+        resolve(resp);
+      });
+    });
+  }
+
 }
