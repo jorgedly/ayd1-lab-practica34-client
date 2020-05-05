@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AutentificacionService {
 
-  url_api = 'http://localhost:3000';
+  url_api = 'https://analisis1.herokuapp.com';
 
   constructor(public httpClient: HttpClient) { }
 
