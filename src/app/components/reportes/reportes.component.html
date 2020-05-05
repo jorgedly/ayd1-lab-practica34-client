@@ -8,7 +8,7 @@
                 <th><abbr title="Position">No.</abbr></th>
                 <th><abbr title="Position">Cuenta Origen</abbr></th>
                 <th>Cuenta Destino</th>
-                <th><abbr title="Played">Cantidad</abbr></th>
+                <th><abbr title="Played">No. Transaccion</abbr></th>
                 <th><abbr title="Played">Monto</abbr></th>
             </tr>
         </thead>
@@ -17,7 +17,7 @@
                 <th><abbr title="Position">No.</abbr></th>
                 <th><abbr title="Position">Cuenta Origen</abbr></th>
                 <th>Cuenta Destino</th>
-                <th><abbr title="Played">Cantidad</abbr></th>
+                <th><abbr title="Played">No. Transaccion</abbr></th>
                 <th><abbr title="Played">Monto</abbr></th>
             </tr>
         </tfoot>
@@ -32,7 +32,7 @@
             </tr>
         </tbody>
     </table>
-
+    <button class="button is-success is-inverted" (click)="generatePdf()">Reporte General PDF</button>
 </div>
 <br>
 <hr>
@@ -68,5 +68,5 @@
             </tr>
         </tbody>
     </table>
-
+    <button class="button is-success is-inverted" (click)="generateMiPdf()">Mis Transferencias PDF</button>
 </div>
