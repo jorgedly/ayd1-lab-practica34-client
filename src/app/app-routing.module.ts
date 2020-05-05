@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ConsultarSaldoComponent } from './components/consultar-saldo/consultar-saldo.component';
 import { TipocambioComponent } from './components/tipocambio/tipocambio.component';
 import { TransferenciaComponent } from './components/transferencia/transferencia.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 const routes: Routes = [
   {
     path: '',
@@ -30,6 +31,11 @@ const routes: Routes = [
     path: 'transference',
     pathMatch: 'full',
     component: TransferenciaComponent
+  },
+  {
+    path: 'reporte',
+    pathMatch: 'full',
+    component: ReportesComponent
   }
 ];
 
