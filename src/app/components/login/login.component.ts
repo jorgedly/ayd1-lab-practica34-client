@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
   no_cuenta_registro: string = '';
   email_registro: string = '';
   password_registro: string = '';
-  myObj :any;
-  item2:any;
+  myObj: any;
+  item2: any;
   key: any;
-  
+
   constructor(public autentificacionService: AutentificacionService,
     public router: Router) {
     localStorage.clear();
@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
   }
 
   //---------------------------------------------VARIABLES DE SESSION
-  guardarVariable(key, myObj){
+  guardarVariable(key, myObj) {
     localStorage.setItem(key, JSON.stringify(myObj));
   }
 
-  leerVariable(){
+  leerVariable() {
     //localStorage.setItem(key, JSON.stringify(myObj));
   }
 
@@ -76,11 +76,11 @@ export class LoginComponent implements OnInit {
   //---------------------------------------------------METODOS---------------------------------------------------//
   async login() {
     const resp = await this.autentificacionService.login(this.email, this.password);
-    console.log(resp);
-
     if (resp) {
-      console.log(resp);
-      if (resp === true) {
+      if (resp['auth'] === true) {
+        localStorage.setItem('nombres', resp['nombres']);
+        localStorage.setItem('apellidos', resp['apellidos']);
+        localStorage.setItem('no_cuenta', resp['no_cuenta']);
         this.router.navigate(['/', 'home']);
       }
     }
