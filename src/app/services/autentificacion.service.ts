@@ -8,7 +8,7 @@ export class AutentificacionService {
 
   url_api = 'https://analisis1.herokuapp.com';
 
-  constructor(public httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   login(email,password){
     const data = {email, password}

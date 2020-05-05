@@ -19,7 +19,7 @@ export class ConsultarSaldoComponent implements OnInit {
   cuenta: any;
   saldoDeb: any;
   saldoCre: any;
-  existe: true;
+  existe: boolean = true;
 
   constructor(public consultaService: ConsultaService,
     public router: Router) {
