@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class TransferenceService {
 
-  private API_URL: string = 'http://localhost:3000';
+  private API_URL: string = 'https://analisis1.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 

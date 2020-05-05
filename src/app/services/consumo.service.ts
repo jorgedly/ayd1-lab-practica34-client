@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConsumoService {
 
-  url: string = 'http://localhost:3000/';
+  url: string = 'https://analisis1.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
