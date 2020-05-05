@@ -3,7 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { TipocambioComponent } from './tipocambio.component';
 
-describe('TipocambioComponent', () => {
+describe('Test unitario para tipo de cambio', () => {
   let component: TipocambioComponent;
   let fixture: ComponentFixture<TipocambioComponent>;
 
@@ -22,7 +22,7 @@ describe('TipocambioComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('deberia ser un arreglo', () => {
+    expect(component.cambiar(null)).toBeTruthy();
   });
 });
