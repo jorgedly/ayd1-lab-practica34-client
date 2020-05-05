@@ -76,11 +76,11 @@ export class LoginComponent implements OnInit {
   //---------------------------------------------------METODOS---------------------------------------------------//
   async login() {
     const resp = await this.autentificacionService.login(this.email, this.password);
-    console.log(resp);
-
     if (resp) {
-      console.log(resp);
-      if (resp === true) {
+      if (resp['auth'] === true) {
+        localStorage.setItem('nombres', resp['nombres']);
+        localStorage.setItem('apellidos', resp['apellidos']);
+        localStorage.setItem('no_cuenta', resp['no_cuenta']);
         this.router.navigate(['/', 'home']);
       }
     }
@@ -91,6 +91,7 @@ export class LoginComponent implements OnInit {
         text: 'Intente nuevamente'
       })
   }
+
 
   async register() {
     const resp = await this.autentificacionService.
