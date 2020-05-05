@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { TipocambioComponent } from './tipocambio.component';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 describe('TipocambioComponent', () => {
   let component: TipocambioComponent;
@@ -25,4 +26,9 @@ describe('TipocambioComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deberia cambiar', () => {
+    expect(component.cambiar(undefined)).toBeTruthy();
+  });
+
 });
