@@ -14,7 +14,7 @@ export class ReportesComponent implements OnInit {
   general: any = [];
   miReporte: any = [];
   private cta: any;
-  constructor(private reporteService: ReportesService) { }
+  constructor(public reporteService: ReportesService) { }
 
   ngOnInit(): void {
     this.cta = localStorage.getItem('no_cuenta');

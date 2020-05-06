@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ReportesComponent } from './reportes.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
 describe('ReportesComponent', () => {
   let component: ReportesComponent;
@@ -8,7 +12,10 @@ describe('ReportesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReportesComponent ]
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [ReportesComponent],
+      declarations: [ ReportesComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -22,4 +29,6 @@ describe('ReportesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+ 
 });
