@@ -31,6 +31,11 @@ export class BarraComponent implements OnInit {
       descripcion: 'Ir a transferencia',
       ruta: '/transference',
       icono: 'swap_vert'
+    },
+    {
+      descripcion: 'Reportes',
+      ruta: '/reporte',
+      icono: 'get_app'
     }
   ];
 

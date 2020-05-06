@@ -15,6 +15,7 @@ import { BarraComponent } from './components/barra/barra.component';
 import { TipocambioComponent } from './components/tipocambio/tipocambio.component';
 import { TransferenciaComponent } from './components/transferencia/transferencia.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     ConsultarSaldoComponent,
     BarraComponent,
     TipocambioComponent,
-    TransferenciaComponent
+    TransferenciaComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
