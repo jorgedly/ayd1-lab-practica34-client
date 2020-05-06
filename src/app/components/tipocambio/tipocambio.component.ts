@@ -38,6 +38,9 @@ export class TipocambioComponent implements OnInit {
   }
 
   async cambiar(event: MatDatepickerInputEvent<Date>) {
+    if (!event) {
+      event.value = new Date();
+    }
     const fecha = event.value;
     const dato = `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`;
     this.cambios = await this.conexion.obtenerTipoCambioFechaInicioPromesa(dato);
@@ -45,6 +48,11 @@ export class TipocambioComponent implements OnInit {
       this.cambios = [this.cambios];
     }
     this.dataSource.data = this.cambios;
+    if (this.cambios.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   filtrar(event: Event) {

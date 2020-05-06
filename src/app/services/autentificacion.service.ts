@@ -10,6 +10,25 @@ export class AutentificacionService {
 
   constructor(private httpClient: HttpClient) { }
 
+  reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  rePalabra = /^[a-zA-Z]+$/;
+  reNumero = /^[0-9]+$/;
+
+  verificarLogin(email,password): boolean {
+    if (email && password) {
+      if (
+        !(password.toLowerCase().includes('select')) &&
+        !(password.toLowerCase().includes('script')) &&
+        !(email.toLowerCase().includes('select')) &&
+        !(email.toLowerCase().includes('script')) &&
+        this.reEmail.test(email)
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   login(email,password){
     const data = {email, password}
     const url = `${this.url_api}/login`;
@@ -19,6 +38,29 @@ export class AutentificacionService {
         resolve(resp);
       });
     });
+  }
+
+  verificarRegistro(nombres,apellidos,dpi,no_cuenta,email,password): boolean {
+    if (nombres && apellidos && email && password) {
+      if (
+        !(password.toLowerCase().includes('select')) &&
+        !(password.toLowerCase().includes('script')) &&
+        !(nombres.toLowerCase().includes('select')) &&
+        !(nombres.toLowerCase().includes('script')) &&
+        !(apellidos.toLowerCase().includes('select')) &&
+        !(apellidos.toLowerCase().includes('script')) &&
+        !(email.toLowerCase().includes('select')) &&
+        !(email.toLowerCase().includes('script')) &&
+        this.reEmail.test(email) &&
+        this.rePalabra.test(nombres) &&
+        this.rePalabra.test(apellidos) &&
+        this.reNumero.test(dpi) &&
+        this.reNumero.test(no_cuenta)
+      ) {
+        return true;
+      }
+    }
+    return false;
   }
 
   register(nombres,apellidos,dpi,no_cuenta,email,password){
@@ -52,6 +94,22 @@ export class AutentificacionService {
         resolve(resp);
       });
     });
+  }
+
+  verificarPerfil(no_cuenta, email,password): boolean {
+    if (email && password) {
+      if (
+        !(password.toLowerCase().includes('select')) &&
+        !(password.toLowerCase().includes('script')) &&
+        !(email.toLowerCase().includes('select')) &&
+        !(email.toLowerCase().includes('script')) &&
+        this.reEmail.test(email) && 
+        this.reNumero.test(no_cuenta)
+      ) {
+        return true;
+      }
+    }
+    return false;
   }
 
   modificarPerfil(no_cuenta, email, password){

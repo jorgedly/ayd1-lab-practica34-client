@@ -75,14 +75,24 @@ export class LoginComponent implements OnInit {
 
   //---------------------------------------------------METODOS---------------------------------------------------//
   async login() {
-    const resp = await this.autentificacionService.login(this.email, this.password);
-    if (resp) {
-      if (resp['auth'] === true) {
-        localStorage.setItem('nombres', resp['nombres']);
-        localStorage.setItem('apellidos', resp['apellidos']);
-        localStorage.setItem('no_cuenta', resp['no_cuenta']);
-        this.router.navigate(['/', 'home']);
+    const b_correcto = await this.autentificacionService.verificarLogin(this.email, this.password);
+
+    if(b_correcto){
+      const resp = await this.autentificacionService.login(this.email, this.password);
+      if (resp) {
+        if (resp['auth'] === true) {
+          localStorage.setItem('nombres', resp['nombres']);
+          localStorage.setItem('apellidos', resp['apellidos']);
+          localStorage.setItem('no_cuenta', resp['no_cuenta']);
+          this.router.navigate(['/', 'home']);
+        }
       }
+      else
+        Swal.fire({
+          icon: 'error',
+          title: 'Datos incorrectos.',
+          text: 'Intente nuevamente'
+        })
     }
     else
       Swal.fire({
@@ -94,16 +104,26 @@ export class LoginComponent implements OnInit {
 
 
   async register() {
-    const resp = await this.autentificacionService.
+    const b_correcto = await this.autentificacionService.verificarRegistro(this.nombres_registro, this.apellidos_registro, this.dpi_registro, this.no_cuenta_registro, this.email_registro, this.password_registro);
+
+    if(b_correcto){
+      const resp = await this.autentificacionService.
       register(this.nombres_registro, this.apellidos_registro, this.dpi_registro, this.no_cuenta_registro, this.email_registro, this.password_registro);
 
-    if (resp) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Datos correctos.',
-        text: 'Cuenta registrada correctamente'
-      })
-      this.router.navigate(['/', 'home']);
+      if (resp) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Datos correctos.',
+          text: 'Cuenta registrada correctamente'
+        })
+        this.router.navigate(['/', 'home']);
+      }
+      else
+        Swal.fire({
+          icon: 'error',
+          title: 'Datos incorrectos.',
+          text: 'No se ha podido registrar la cuenta'
+        })
     }
     else
       Swal.fire({
@@ -111,6 +131,7 @@ export class LoginComponent implements OnInit {
         title: 'Datos incorrectos.',
         text: 'No se ha podido registrar la cuenta'
       })
+
   }
 
 }

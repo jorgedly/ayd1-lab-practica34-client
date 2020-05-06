@@ -46,12 +46,20 @@ export class HomeComponent implements OnInit {
   }
 
   async modificar(){
-    const resp = await this.authService.modificarPerfil(this.no_cuenta, this.email, this.password);
 
-    if(resp["success"])
-      alert('Datos modificados correctamente');
+    const b_correcto = await this.authService.verificarPerfil(this.no_cuenta,this.email,this.password);
+
+    if(b_correcto){
+      const resp = await this.authService.modificarPerfil(this.no_cuenta, this.email, this.password);
+
+      if(resp["success"])
+        alert('Datos modificados correctamente');
+      else
+        alert('Los datos no han podido ser modificados');
+    }
     else
-      alert('Los datos no han podido ser modificados');
+      alert('Datos ingresados incorrectos');
+
   }
 
 }
