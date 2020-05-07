@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "practica34"
+  "defaultProject": "practica34",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -8,4 +8,13 @@ export class AppPage {
   getTitleText(): Promise<string> {
     return element(by.css('app-root .content span')).getText() as Promise<string>;
   }
+
+  irTipoCambio() {
+    return browser.get('/tipocambio') as Promise<unknown>;
+  }
+
+  obtenerValorCambioSimple() {
+    return element(by.id('idSimple')).getText() as Promise<string>;
+  }
+
 }

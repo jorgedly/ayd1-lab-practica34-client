@@ -1,0 +1,72 @@
+<app-barra></app-barra>
+<br>
+<div class="container">
+    <h1>Transferencias Generales</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><abbr title="Position">No.</abbr></th>
+                <th><abbr title="Position">Cuenta Origen</abbr></th>
+                <th>Cuenta Destino</th>
+                <th><abbr title="Played">No. Transaccion</abbr></th>
+                <th><abbr title="Played">Monto</abbr></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th><abbr title="Position">No.</abbr></th>
+                <th><abbr title="Position">Cuenta Origen</abbr></th>
+                <th>Cuenta Destino</th>
+                <th><abbr title="Played">No. Transaccion</abbr></th>
+                <th><abbr title="Played">Monto</abbr></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr *ngFor="let gen of general; index as i">
+                <th>{{i + 1}}</th>
+                <td>{{gen.cuenta_origen}}
+                </td>
+                <td>{{gen.cuenta_destino}}</td>
+                <td>{{gen.id_transaccion}}</td>
+                <td>Q {{gen.monto}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="button is-success is-inverted" (click)="generatePdf()">Reporte General PDF</button>
+</div>
+<br>
+<hr>
+<div class="container">
+    <h1>Mis Transferencias</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><abbr title="Position">No.</abbr></th>
+                <th><abbr title="Position">Cuenta Destino</abbr></th>
+                <th>Cuenta Origen</th>
+                <th><abbr title="Played">Cantidad</abbr></th>
+                <th><abbr title="Played">Monto</abbr></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th><abbr title="Position">No.</abbr></th>
+                <th><abbr title="Position">Cuenta Destino</abbr></th>
+                <th>Cuenta Origen</th>
+                <th><abbr title="Played">Cantidad</abbr></th>
+                <th><abbr title="Played">Monto</abbr></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr *ngFor="let m of miReporte; index as i">
+                <th>{{i + 1}}</th>
+                <td>{{m.cuenta_destino}}
+                </td>
+                <td>{{m.cuenta_origen}}</td>
+                <td>{{m.id_transaccion}}</td>
+                <td>Q {{m.monto}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="button is-success is-inverted" (click)="generateMiPdf()">Mis Transferencias PDF</button>
+</div>

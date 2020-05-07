@@ -1,13 +1,41 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { IndexComponent } from './components/index/index.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { ConsultarSaldoComponent } from './components/consultar-saldo/consultar-saldo.component';
+import { TipocambioComponent } from './components/tipocambio/tipocambio.component';
+import { TransferenciaComponent } from './components/transferencia/transferencia.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: IndexComponent
+    component: LoginComponent
+  },
+  {
+    path: 'home',
+    pathMatch: 'full',
+    component: HomeComponent
+  },
+  {
+    path: 'tipocambio',
+    pathMatch: 'full',
+    component: TipocambioComponent
+  },
+  {
+    path: 'consultarSaldo',
+    pathMatch: 'full',
+    component: ConsultarSaldoComponent
+  },
+  {
+    path: 'transference',
+    pathMatch: 'full',
+    component: TransferenciaComponent
+  },
+  {
+    path: 'reporte',
+    pathMatch: 'full',
+    component: ReportesComponent
   }
 ];
 

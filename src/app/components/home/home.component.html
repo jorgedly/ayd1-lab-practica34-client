@@ -1,0 +1,47 @@
+<app-barra></app-barra>
+<mat-toolbar color="primary">
+    Perfil Usuario
+</mat-toolbar>
+<br>
+
+<div class="container">
+
+    <img src="../../../assets/user.svg">
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput disabled="true" value="{{nombre}}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Apellido</mat-label>
+        <input matInput disabled="true" value="{{apellido}}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>DPI</mat-label>
+        <input matInput disabled="true" value="{{dpi}}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>NO. Cuenta</mat-label>
+        <input matInput disabled="true" value="{{no_cuenta}}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Saldo</mat-label>
+        <input matInput disabled="true" value="{{saldo}}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput value="{{email}}" (keyup)="onKeyEmail($event)">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput value="{{password}}" (keyup)="onKeyPassword($event)">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="modificar()">Modificar Datos</button>
+</div>
