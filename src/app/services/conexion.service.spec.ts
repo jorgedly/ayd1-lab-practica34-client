@@ -18,4 +18,21 @@ describe('ConexionService', () => {
     service = TestBed.get(ConexionService);
     expect(service).toBeTruthy();
   });
+
+  it('should be obtenerTipoCambioSimple', () => {
+    expect(service.obtenerCambioSimple()).toBeTruthy();
+  });
+
+  it('should be obtenerCambioSimplePromesa', () => {
+    expect(service.obtenerCambioSimplePromesa()).toBeTruthy();
+  });
+
+  it('should be obtenerTipoCambioFechaInicio', () => {
+    expect(service.obtenerTipoCambioFechaInicio("1/1/2020")).toBeTruthy();
+  });
+
+  it('should be obtenerTipoCambioFechaInicioPromesa', () => {
+    expect(service.obtenerTipoCambioFechaInicioPromesa("1/1/2020")).toBeTruthy();
+  });
+
 });

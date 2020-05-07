@@ -17,4 +17,14 @@ describe('ReportesService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  
+  it('should be misTransferencias', () => {
+    expect(service.misTransferencias("")).toBeTruthy();
+  });
+
+  
+  it('should be transferenciaGeneral', () => {
+    expect(service.TranferenciaGeneral()).toBeTruthy();
+  });
 });

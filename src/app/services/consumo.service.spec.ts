@@ -17,4 +17,19 @@ describe('ConsumoService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  it('should be obtenerTipoCambioFechaInicio', () => {
+    expect(service.obtenerTipoCambioFechaInicio("1/1/2020")).toBeTruthy();
+  });
+  
+  it('should be obtenerTipoCambioFechaInicioPromesa', () => {
+    expect(service.obtenerTipoCambioFechaInicioPromesa("1/1/2020")).toBeTruthy();
+  });
+
+  it('should be obtenerTipoCambioSimple', () => {
+    expect(service.obtenerTipoCambioSimple()).toBeTruthy();
+  });
+  
+  it('should be obtenerTipoCambioSimplePromesa', () => {
+    expect(service.obtenerTipoCambioSimplePromesa()).toBeTruthy();
+  });
 });

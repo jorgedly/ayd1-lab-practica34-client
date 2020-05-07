@@ -14,7 +14,7 @@ import { LoginComponent } from '../login/login.component';
 export class ConsultarSaldoComponent implements OnInit {
 
   consulta: Consultita;
-  noCuenta: number = 8;
+  noCuenta: number = 0;
   saldo: number = 0;
   cuenta: any;
   saldoDeb: any;
@@ -23,15 +23,15 @@ export class ConsultarSaldoComponent implements OnInit {
 
   constructor(public consultaService: ConsultaService,
     public router: Router) {
+    this.devolverNoCuenta();
     this.getConsult();
     this.getSaldoDeb();
     this.getSaldoCre();
-    this.devolverNoCuenta();
   }
 
   devolverNoCuenta() {
     //TODO devolver el no de cuenta en variable de session
-    //localStorage.getItem('no_cuenta') ? localStorage.getItem('no_cuenta') : 'noCuenta';
+    this.noCuenta=Number(localStorage.getItem('no_cuenta') ? localStorage.getItem('no_cuenta') : 'noCuenta');
   }
 
 
@@ -48,27 +48,20 @@ export class ConsultarSaldoComponent implements OnInit {
     this.noCuenta = obj.no_cuenta;
     this.saldo = obj.saldo;
     this.existe = true;
+    return resp;
   }
 
   async getSaldoDeb() {
     const resp = await this.consultaService.getSaldoDeb(this.noCuenta);
     this.saldoDeb = resp;
+    return resp;
   }
 
   async getSaldoCre() {
     const resp = await this.consultaService.getSaldoCre(this.noCuenta);
     this.saldoCre = resp;
+    return resp;
   }
-
-  /*
-  public workStatuses = [
-    { id: 0, description: 'No_de_Operacion' },
-    { id: 1, description: 'Fecha' },
-    { id: 2, description: 'Descripción' },
-    { id: 3, description: 'cargos' },
-    { id: 4, description: 'abonos' },
-    { id: 5, description: 'saldo' }
-  ];*/
 
   public contact = { name: '', isVIP: false, gender: '', workStatus: 0 };
 

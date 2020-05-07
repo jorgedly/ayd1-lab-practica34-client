@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TransferenciaComponent } from './transferencia.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TransferenciaComponent', () => {
   let component: TransferenciaComponent;
@@ -8,9 +8,9 @@ describe('TransferenciaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TransferenciaComponent ]
+      declarations: [TransferenciaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -18,8 +18,9 @@ describe('TransferenciaComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+/*
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+  */
 });
