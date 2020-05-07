@@ -105,18 +105,20 @@ export class LoginComponent implements OnInit {
 
   async register() {
     const b_correcto = await this.autentificacionService.verificarRegistro(this.nombres_registro, this.apellidos_registro, this.dpi_registro, this.no_cuenta_registro, this.email_registro, this.password_registro);
-
+    console.log(b_correcto);
     if(b_correcto){
       const resp = await this.autentificacionService.
       register(this.nombres_registro, this.apellidos_registro, this.dpi_registro, this.no_cuenta_registro, this.email_registro, this.password_registro);
-
+      console.log(resp);
       if (resp) {
         Swal.fire({
           icon: 'success',
           title: 'Datos correctos.',
           text: 'Cuenta registrada correctamente'
         })
-        this.router.navigate(['/', 'home']);
+        localStorage.setItem('nombres', resp['nombres']);
+        localStorage.setItem('apellidos', resp['apellidos']);
+        localStorage.setItem('no_cuenta', resp['no_cuenta']);  
       }
       else
         Swal.fire({
