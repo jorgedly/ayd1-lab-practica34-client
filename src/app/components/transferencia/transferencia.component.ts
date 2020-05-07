@@ -13,6 +13,7 @@ export class TransferenciaComponent implements OnInit {
   miCuenta: number = 0;
   cuenta2: number = 0;
   monto: number = 0.00;
+  error: boolean = false;
 
   constructor(public transferService: TransferenceService, public router: Router) { }
 
@@ -37,22 +38,27 @@ export class TransferenciaComponent implements OnInit {
     this.transferService.transferMoney(this.miCuenta,this.cuenta2,this.monto)
     .subscribe(
       res => {
-        if(res){
-          Swal.fire({
-            icon: 'success',
-            title: 'Hecho',
-            text: 'Transaccion realizada con exito'
-          })
-          this.router.navigate(['/','home']);  
-        }else{
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Error ejecutando la transaccion'
-          })
-        }
+        this.showMessage(res);
       }
     );
+  }
+
+  showMessage(flag){
+    if(flag){
+      Swal.fire({
+        icon: 'success',
+        title: 'Hecho',
+        text: 'Transaccion realizada con exito'
+      })
+      this.router.navigate(['/','home']);  
+    }else{
+      this.error = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error ejecutando la transaccion'
+      })
+    }
   }
 
 }
