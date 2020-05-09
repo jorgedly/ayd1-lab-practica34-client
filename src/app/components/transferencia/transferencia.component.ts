@@ -45,6 +45,7 @@ export class TransferenciaComponent implements OnInit {
 
   showMessage(flag){
     if(flag){
+      this.error = false;
       Swal.fire({
         icon: 'success',
         title: 'Hecho',
