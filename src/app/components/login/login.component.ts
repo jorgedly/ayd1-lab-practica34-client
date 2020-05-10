@@ -101,6 +101,16 @@ export class LoginComponent implements OnInit {
         text: 'Intente nuevamente'
       })
   }
+  // 1
+  // 2
+  // 3
+  // 4
+  // 5
+  // 6
+  // 7
+  // 8
+  // 9
+  // 10
 
 
   async register() {

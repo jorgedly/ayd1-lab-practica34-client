@@ -49,7 +49,7 @@ describe('ConsultaService', () => {
     //actually resolve the promise
     //$rootScope.$digest();
     //expect promise to have been resolved
-    expect(resolved).toBe(false);
+    expect(resolved).toBe(true);
   });
 
   it("Should be getSaldoCre", function () {
