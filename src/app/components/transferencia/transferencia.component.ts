@@ -39,18 +39,20 @@ export class TransferenciaComponent implements OnInit {
     .subscribe(
       res => {
         this.showMessage(res);
+        //Jenkins test not
       }
     );
   }
 
   showMessage(flag){
     if(flag){
+      this.error = false;
       Swal.fire({
         icon: 'success',
         title: 'Hecho',
         text: 'Transaccion realizada con exito'
-      })
-      this.router.navigate(['/','home']);  
+      }) 
+      this.router.navigate(['/','home']);   
     }else{
       this.error = true;
       Swal.fire({
