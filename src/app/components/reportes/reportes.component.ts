@@ -16,6 +16,9 @@ export class ReportesComponent implements OnInit {
   pdf: boolean = false;
   fgeneral: boolean = false;
   cta: any;
+  encabezado = ['No', 'Cuenta_Origen', 'Cuenta Destino', 'No._Transaccion', 'Monto'];
+  row = [];
+  tableBody = [];
   constructor(public reporteService: ReportesService) { }
 
   ngOnInit(): void {
@@ -44,32 +47,26 @@ export class ReportesComponent implements OnInit {
   }
 
   generatePdf() {
-    var encabezado = ['No', 'Cuenta_Origen', 'Cuenta Destino', 'No._Transaccion', 'Monto'];
-    var tableBody = [];
-
-    for (var i = 0; i < encabezado.length; i++) {
-      var row = [];
+    for (var i = 0; i < this.encabezado.length; i++) {
       for (var j = 0; j < this.general.length; j++) {
-        if(i === 0) {
-          row[j] =j+1;
+        if (i === 0) {
+          this.row[j] = j + 1;
         }
-        if(i === 1) {
-          row[j] =this.general[j].cuenta_origen;
+        if (i === 1) {
+          this.row[j] = this.general[j].cuenta_origen;
         }
-        if(i === 2) {
-          row[j] =this.general[j].cuenta_destino;
+        if (i === 2) {
+          this.row[j] = this.general[j].cuenta_destino;
         }
-        if(i === 3) {
-          row[j] =this.general[j].id_transaccion;
+        if (i === 3) {
+          this.row[j] = this.general[j].id_transaccion;
         }
-        if(i === 4) {
-          row[j] =this.general[j].monto;
+        if (i === 4) {
+          this.row[j] = this.general[j].monto;
         }
-       
-       
       }
-      tableBody.push(row);
-      row = [];
+      this.tableBody.push(this.row);
+      this.row = [];
     }
 
     const documentDefinition = {
@@ -87,7 +84,7 @@ export class ReportesComponent implements OnInit {
             widths: ['*', '*', '*', '*', '*'],
             body: [
               ['No', 'Cuenta_Origen', 'Cuenta Destino', 'No._Transaccion', 'Monto'],
-              tableBody
+              this.tableBody
             ]
           }
         }
@@ -99,35 +96,30 @@ export class ReportesComponent implements OnInit {
       },
     };
     pdfMake.createPdf(documentDefinition).open();
+    this.tableBody = [];
   }
 
   generateMiPdf() {
-    var encabezado = ['No', 'Cuenta_Origen', 'Cuenta Destino', 'No._Transaccion', 'Monto'];
-    var tableBody = [];
-
-    for (var i = 0; i < encabezado.length; i++) {
-      var row = [];
+    for (var i = 0; i < this.encabezado.length; i++) {
       for (var j = 0; j < this.miReporte.length; j++) {
-        if(i === 0) {
-          row[j] =j+1;
+        if (i === 0) {
+          this.row[j] = j + 1;
         }
-        if(i === 1) {
-          row[j] =this.miReporte[j].cuenta_origen;
+        if (i === 1) {
+          this.row[j] = this.miReporte[j].cuenta_origen;
         }
-        if(i === 2) {
-          row[j] =this.miReporte[j].cuenta_destino;
+        if (i === 2) {
+          this.row[j] = this.miReporte[j].cuenta_destino;
         }
-        if(i === 3) {
-          row[j] =this.miReporte[j].id_transaccion;
+        if (i === 3) {
+          this.row[j] = this.miReporte[j].id_transaccion;
         }
-        if(i === 4) {
-          row[j] =this.miReporte[j].monto;
+        if (i === 4) {
+          this.row[j] = this.miReporte[j].monto;
         }
-       
-       
       }
-      tableBody.push(row);
-      row = [];
+      this.tableBody.push(this.row);
+      this.row = [];
     }
 
     const documentDefinition = {
@@ -155,14 +147,14 @@ export class ReportesComponent implements OnInit {
             ]
           ]
         },
-      
+
         {
           table: {
             headerRows: 1,
             widths: ['*', '*', '*', '*', '*'],
             body: [
               ['No', 'Cuenta_Origen', 'Cuenta Destino', 'No._Transaccion', 'Monto'],
-              tableBody
+              this.tableBody
             ]
           }
         }
@@ -174,8 +166,6 @@ export class ReportesComponent implements OnInit {
       },
     };
     pdfMake.createPdf(documentDefinition).open();
+    this.tableBody = [];
   }
-
-
-
 }
