@@ -39,7 +39,7 @@ export class TransferenciaComponent implements OnInit {
     .subscribe(
       res => {
         this.showMessage(res);
-        //Jenkins test
+        //Jenkins test not
       }
     );
   }
