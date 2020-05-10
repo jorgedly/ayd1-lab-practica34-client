@@ -13,7 +13,9 @@ export class ReportesComponent implements OnInit {
 
   general: any = [];
   miReporte: any = [];
-  private cta: any;
+  pdf: boolean = false;
+  fgeneral: boolean = false;
+  cta: any;
   constructor(public reporteService: ReportesService) { }
 
   ngOnInit(): void {
@@ -26,8 +28,9 @@ export class ReportesComponent implements OnInit {
     this.reporteService.TranferenciaGeneral().subscribe(
       res => {
         this.general = res;
+        this.fgeneral = true;
       },
-      err => console.log(err)
+      err => this.fgeneral = false
     )
   }
 
